@@ -4,16 +4,22 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "lib": ["es6", "dom"],
-    "module": "es6",
+    "module": "es2015",
     "moduleResolution": "node",
     "sourceMap": true,
-    "target": "es5"
+    "target": "es5",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "baseUrl": "./app/javascript"
   },
+  "include": [
+    "app/javascript/**/*"
+  ],
   "exclude": [
     "**/*.spec.ts",
     "node_modules",
-    "vendor",
-    "public"
+    "public",
+    "vendor"
   ],
   "compileOnSave": false
 }
