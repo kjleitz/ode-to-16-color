@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  color_map: MyText
+  duration: 1
+  animation: one
+  index: 1
+
+two:
+  color_map: MyText
+  duration: 1
+  animation: two
+  index: 1

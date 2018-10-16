@@ -1,0 +1,2 @@
+class AnimationVotesController < ApplicationController
+end
