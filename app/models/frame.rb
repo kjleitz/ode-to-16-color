@@ -1,14 +1,16 @@
 class Frame < ApplicationRecord
-  default_scope { order(:animation_id, :position) }
-
   belongs_to :animation
 
   serialize :color_map, JSON
 
   validates :position, presence: true, uniqueness: { scope: :animation_id }
   validates :duration, presence: true
+  validates :color_map, presence: true
 
   before_create :default_to_last_position!
+  before_create :default_to_white_color_map!
+
+  default_scope { order(:animation_id, :position) }
 
   def previous_frames(inclusive: false)
     before_operator = inclusive ? '<=' : '<'
@@ -18,7 +20,7 @@ class Frame < ApplicationRecord
   def previous_frame
     previous_frames.last
   end
-  
+
   def next_frames(inclusive: false)
     after_operator = inclusive ? '>=' : '>'
     animation.frames.where("position #{after_operator} ?", position)
@@ -40,5 +42,13 @@ class Frame < ApplicationRecord
 
   def default_to_last_position!
     self.position ||= animation.frames.last.position + 1
+  end
+
+  def default_to_white_color_map!
+    self.color_map ||= height.times.map do |row|
+      width.times.map do |column|
+        '#FFFFFF'
+      end
+    end
   end
 end

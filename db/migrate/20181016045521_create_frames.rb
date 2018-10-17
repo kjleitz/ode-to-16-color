@@ -5,6 +5,8 @@ class CreateFrames < ActiveRecord::Migration[5.2]
       t.integer :duration, default: 250
       t.belongs_to :animation, foreign_key: true
       t.integer :position
+      t.integer :width, default: 75  # 16:9
+      t.integer :height, default: 48 # 16:9
 
       t.timestamps
     end

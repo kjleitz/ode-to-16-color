@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :users
   resources :comment_votes
   resources :animation_votes
   resources :comments
