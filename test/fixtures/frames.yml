@@ -4,10 +4,10 @@ one:
   color_map: MyText
   duration: 1
   animation: one
-  index: 1
+  position: 1
 
 two:
   color_map: MyText
   duration: 1
   animation: two
-  index: 1
+  position: 1
