@@ -1,4 +1,4 @@
 class AnimationsTag < ActiveRecord::Base
-  belongs_to :animations
-  belongs_to :tags
+  belongs_to :animation
+  belongs_to :tag
 end

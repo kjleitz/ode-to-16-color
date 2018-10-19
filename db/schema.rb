@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_17_045812) do
+ActiveRecord::Schema.define(version: 2018_10_19_033345) do
 
   create_table "animation_votes", force: :cascade do |t|
     t.integer "value"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2018_10_17_045812) do
     t.text "description", default: ""
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "movies"
     t.index ["user_id"], name: "index_animations_on_user_id"
   end
 

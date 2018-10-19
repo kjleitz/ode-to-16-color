@@ -8,6 +8,12 @@ class Animation < ApplicationRecord
   has_many :animations_tags
   has_many :tags, through: :animations_tags
 
+  # NB: When doing a form for `movies`, do:
+  #   f.file_field :movies, multiple: true
+  # See https://github.com/carrierwaveuploader/carrierwave#multiple-file-uploads
+  mount_uploaders :movies, MovieUploader
+  serialize :movies, JSON
+
   friendly_id :name, use: :slugged
 
   validates :name, presence: true
