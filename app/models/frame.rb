@@ -1,7 +1,18 @@
 class Frame < ApplicationRecord
+  PERMITTED_ATTRS = %i[
+    color_map
+    duration
+    animation_id
+    position
+    width
+    height
+  ]
+
   belongs_to :animation
 
   serialize :color_map, JSON
+
+  delegate :user, to: :animation
 
   validates :position, presence: true, uniqueness: { scope: :animation_id }
   validates :duration, presence: true

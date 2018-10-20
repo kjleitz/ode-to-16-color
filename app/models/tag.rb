@@ -1,6 +1,11 @@
 class Tag < ApplicationRecord
   extend FriendlyId
 
+  PERMITTED_ATTRS = %i[
+    name
+    description
+  ]
+
   has_many :animations_tags
   has_many :animations, through: :animations_tags
 
