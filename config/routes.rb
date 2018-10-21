@@ -6,8 +6,13 @@ Rails.application.routes.draw do
   resources :animations, only: [:index, :show, :edit, :update, :destroy]
 
   resources :animations do
-    resources :comments, shallow: true
     resources :frames, only: [:index, :show]
+    resources :comments, shallow: true
+    resources :votes, only: [:create, :update, :destroy]
+  end
+
+  resources :comments do
+    resources :votes, only: [:create, :update, :destroy]
   end
 
   resources :frames, only: [:destroy]

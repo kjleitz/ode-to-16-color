@@ -27,6 +27,14 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
 
+  def validation_failure_for(record, as: :html)
+    case as
+    when :json then { json: { record.errors.messages }, status: :unprocessable_entity }
+    when :html then { status: :unprocessable_entity, alert: record.errors.full_messages.to_sentence }
+    when :text then { text: record.errors.full_messages.to_sentence, status: :unprocessable_entity }
+    end
+  end
+
   private
 
   def user_not_authorized(error)
