@@ -1,0 +1,11 @@
+%h1= @animation.name
+= link_to 'edit', edit_animation_path(@animation) if policy(@animation).edit?
+
+%p.author
+  By
+  = link_to @animation.user.handle, @animation.user
+
+%p.description
+  = @animation.description
+
+= image_tag @animation.movie.url

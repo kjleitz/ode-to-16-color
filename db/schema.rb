@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2018_10_19_033345) do
     t.text "description", default: ""
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "movies"
+    t.text "movie"
     t.index ["user_id"], name: "index_animations_on_user_id"
   end
 

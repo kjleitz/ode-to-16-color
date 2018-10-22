@@ -1,0 +1,24 @@
+%h1= @user.handle
+= link_to 'edit', edit_user_path(@user) if policy(@user).edit?
+
+%h2 user info
+%table
+  %tr
+    %td Handle:
+    %td= @user.handle
+  %tr
+    %td Name:
+    %td= @user.name
+  %tr
+    %td Email:
+    %td= @user.email
+
+%h2 user bio
+%p= @user.bio
+
+%h2 user signature
+%p= @user.signature
+
+%h2 animations by #{@user.handle}
+- @user.animations.each do |animation|
+  = image_tag animation.movie.url

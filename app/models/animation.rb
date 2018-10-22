@@ -4,7 +4,7 @@ class Animation < ApplicationRecord
   PERMITTED_ATTRS = %i[
     name
     description
-    movies
+    movie
   ]
 
   belongs_to :user
@@ -14,11 +14,8 @@ class Animation < ApplicationRecord
   has_many :animations_tags
   has_many :tags, through: :animations_tags
 
-  # NB: When doing a form for `movies`, do:
-  #   f.file_field :movies, multiple: true
-  # See https://github.com/carrierwaveuploader/carrierwave#multiple-file-uploads
-  mount_uploaders :movies, MovieUploader
-  serialize :movies, JSON
+  mount_uploader :movie, MovieUploader
+  serialize :movie, JSON
 
   friendly_id :name, use: :slugged
 

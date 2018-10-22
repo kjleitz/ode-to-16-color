@@ -1,0 +1,33 @@
+%h1 sign up
+
+= form_for @user do |f|
+  .row
+    .form-group.col-md-6
+      = f.label :handle
+      = f.text_field :handle, required: true, class: 'form-control'
+  .row
+    .form-group.col-md-6
+      = f.label :email
+      = f.email_field :email, required: true, class: 'form-control'
+  .row
+    .form-group.col-md-6
+      = f.label :password
+      = f.password_field :password, required: true, class: 'form-control'
+  .row
+    .form-group.col-md-6
+      = f.label :password_confirmation
+      = f.password_field :password_confirmation, required: true, class: 'form-control'
+  .row
+    .form-group.col-md-6
+      = f.submit 'sign up', class: 'btn btn-primary'
+
+  -# = f.text_field :handle, required: true
+  -# = f.text_field :email
+  -# = f.password_field :password, required: true
+  -# = f.password_field :password_confirmation, required: true
+  -# -# = f.text_field :first_name
+  -# -# = f.text_field :last_name
+  -# -# = f.text_field :phone
+  -# -# = f.text_field :bio
+  -# -# = f.text_field :signature
+  -# = f.submit

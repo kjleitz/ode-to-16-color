@@ -1,0 +1,26 @@
+.row
+  .col-md-5
+    %h2 log in with your handle
+    = form_for @user, url: login_path do |f|
+      .form-group
+        = f.label :handle
+        = f.text_field :handle, required: true, class: 'form-control'
+      .form-group
+        = f.label :password
+        = f.password_field :password, required: true, class: 'form-control'
+      = f.submit 'log in', class: 'btn btn-primary'
+
+  .col-md-2
+    %h2
+      &mdash; or &mdash;
+
+  .col-md-5
+    %h2 log in with your email
+    = form_for @user, url: login_path do |f|
+      .form-group
+        = f.label :email
+        = f.email_field :email, required: true, class: 'form-control'
+      .form-group
+        = f.label :password
+        = f.password_field :password, required: true, class: 'form-control'
+      = f.submit 'log in', class: 'btn btn-primary'

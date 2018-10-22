@@ -9,10 +9,7 @@ class ApplicationController < ActionController::Base
   # after_action :verify_policy_scoped, only: [:index]
 
   def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
-  rescue ActiveRecord::RecordNotFound
-    flash[:error] = "Your session has expired. Please log in again."
-    redirect_to root_path
+    @current_user ||= User.find_by(session[:user_id])
   end
 
   def set_current_user(user)
@@ -29,7 +26,7 @@ class ApplicationController < ActionController::Base
 
   def validation_failure_for(record, as: :html)
     case as
-    when :json then { json: { record.errors.messages }, status: :unprocessable_entity }
+    when :json then return { json: { errors: record.errors.messages }, status: :unprocessable_entity }
     when :html then { status: :unprocessable_entity, alert: record.errors.full_messages.to_sentence }
     when :text then { text: record.errors.full_messages.to_sentence, status: :unprocessable_entity }
     end

@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  root 'animations#index'
+  get '/signup', to: 'users#new'
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
+
   resources :users do #            vvvvv-- index of animations for user
     resources :animations, only: [:index, :show, :new, :create]
   end
