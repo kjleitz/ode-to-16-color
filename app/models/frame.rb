@@ -14,12 +14,13 @@ class Frame < ApplicationRecord
 
   delegate :user, to: :animation
 
-  validates :position, presence: true, uniqueness: { scope: :animation_id }
+  # validates :position, presence: true, uniqueness: { scope: :animation_id }
   validates :duration, presence: true
   validates :color_map, presence: true
+  # validate :frames_in_animation_are_equal_size
 
-  before_create :default_to_last_position!
-  before_create :default_to_white_color_map!
+  # before_create :default_to_last_position!
+  # before_create :default_to_white_color_map!
 
   default_scope { order(:animation_id, :position) }
 
@@ -51,15 +52,24 @@ class Frame < ApplicationRecord
 
   private
 
-  def default_to_last_position!
-    self.position ||= animation.frames.last.position + 1
-  end
+  # def default_to_last_position!
+  #   self.position ||= animation.frames.last.position + 1
+  # end
 
-  def default_to_white_color_map!
-    self.color_map ||= height.times.map do |row|
-      width.times.map do |column|
-        '#FFFFFF'
-      end
-    end
-  end
+  # def default_to_white_color_map!
+  #   self.color_map ||= height.times.map do |row|
+  #     width.times.map do |column|
+  #       '#FFFFFF'
+  #     end
+  #   end
+  # end
+
+  # def frames_in_animation_are_equal_size
+  #   sizes = animation.frames.pluck(:width, :height)
+  #   widths = sizes.map(&:first)
+  #   heights = sizes.map(&:second)
+  #   unless widths.uniq.count == 1 && heights.uniq.count == 1
+  #     errors.add(:frames, 'must be equal sizes')
+  #   end
+  # end
 end

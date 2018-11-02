@@ -20,7 +20,7 @@ class Animation < ApplicationRecord
   friendly_id :name, use: :slugged
 
   validates :name, presence: true
-  validate :all_frames_are_equal_size
+  # validate :all_frames_are_equal_size
 
   # The error message for validates_associated will simply be "is invalid"; for
   # detailed errors check the child.
@@ -37,11 +37,13 @@ class Animation < ApplicationRecord
   end
 
   def score
-    @score ||= votes.pluck(:value).sum
+    # @score ||= votes.pluck(:value).sum
+    votes.pluck(:value).sum
   end
 
   def duration
-    @duration ||= frames.pluck(:duration).sum
+    # @duration ||= frames.pluck(:duration).sum
+    frames.pluck(:duration).sum
   end
 
   def frame_at(position)
@@ -50,12 +52,14 @@ class Animation < ApplicationRecord
 
   private
 
-  def all_frames_are_equal_size
-    sizes = frames.pluck(:width, :height)
-    widths = sizes.map(&:first)
-    heights = sizes.map(&:second)
-    unless widths.uniq.count == 1 && heights.uniq.count == 1
-      errors.add(:frames, 'must be equal sizes')
-    end
-  end
+  # def all_frames_are_equal_size
+  #   binding.pry
+  #   return if frames.empty?
+  #   sizes = frames.pluck(:width, :height)
+  #   widths = sizes.map(&:first)
+  #   heights = sizes.map(&:second)
+  #   unless widths.uniq.count == 1 && heights.uniq.count == 1
+  #     errors.add(:frames, 'must be equal sizes')
+  #   end
+  # end
 end

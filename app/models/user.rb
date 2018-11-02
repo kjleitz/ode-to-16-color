@@ -33,4 +33,8 @@ class User < ApplicationRecord
   # scope :basic
   # scope :moderator
   # scope :admin
+
+  def name
+    "#{first_name.strip} #{last_name.strip}".strip
+  end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_19_033345) do
+ActiveRecord::Schema.define(version: 2018_10_26_034216) do
 
   create_table "animation_votes", force: :cascade do |t|
     t.integer "value"
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 2018_10_19_033345) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "movie"
+    t.string "slug"
+    t.index ["slug"], name: "index_animations_on_slug"
     t.index ["user_id"], name: "index_animations_on_user_id"
   end
 
@@ -88,6 +90,8 @@ ActiveRecord::Schema.define(version: 2018_10_19_033345) do
     t.string "description", default: ""
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "slug"
+    t.index ["slug"], name: "index_tags_on_slug"
   end
 
   create_table "users", force: :cascade do |t|
@@ -102,6 +106,10 @@ ActiveRecord::Schema.define(version: 2018_10_19_033345) do
     t.integer "role", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "slug"
+    t.index ["email"], name: "index_users_on_email"
+    t.index ["handle"], name: "index_users_on_handle"
+    t.index ["slug"], name: "index_users_on_slug"
   end
 
 end
