@@ -1,0 +1,21 @@
+%h1 new animation
+
+= form_for @animation do |f|
+  .row
+    .form-group.col-md-6
+      = f.label :name
+      = f.text_field :name, class: 'form-control'
+  .row
+    .form-group.col-md-6
+      = f.label :description
+      = f.text_area :description, class: 'form-control'
+  .row
+    .form-group.col-md-6
+      = f.label :tags
+      = f.collection_check_boxes :tags, Tag.all, :name, :name
+  .row
+    .form-group.col-md-6
+      = f.submit class: 'btn btn-primary'
+
+
+placeholder for some CRAZY FUCKIN' JAVASCRIPT, BOY

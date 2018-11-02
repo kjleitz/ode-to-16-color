@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
   # after_action :verify_policy_scoped, only: [:index]
 
   def current_user
-    @current_user ||= User.find_by(id: session[:user_id])
+    @current_user ||= User.friendly.find_by(id: session[:user_id])
   end
 
   def set_current_user(user)

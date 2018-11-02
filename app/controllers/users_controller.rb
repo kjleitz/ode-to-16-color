@@ -28,7 +28,7 @@ class UsersController < ApplicationController
   def update
     if @user.update(user_params)
       flash[:success] = "User '#{@user.handle}' updated!"
-      redirect_to action: :show
+      redirect_to user_path(@user)
     else
       flash[:error] = @user.errors.full_messages.to_sentence
       render :edit
@@ -41,7 +41,7 @@ class UsersController < ApplicationController
       redirect_to root_path
     else
       flash[:error] = @user.errors.full_messages.to_sentence
-      redirect_to action: :show
+      redirect_to user_path(@user)
     end
   end
 

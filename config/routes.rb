@@ -6,18 +6,18 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   resources :users do #            vvvvv-- index of animations for user
-    resources :animations, only: [:index, :show, :new, :create]
+    resources :animations, only: [:index]
   end
   #                              vvvvv-- index of animations globally
-  resources :animations, only: [:index, :show, :edit, :update, :destroy]
+  resources :animations, only: [:index, :show, :new, :edit, :create, :update, :destroy]
 
-  resources :animations do
+  resources :animations, only: [] do
     resources :frames, only: [:index, :show]
     resources :comments, shallow: true
     resources :votes, only: [:create, :update, :destroy]
   end
 
-  resources :comments do
+  resources :comments, only: [] do
     resources :votes, only: [:create, :update, :destroy]
   end
 
