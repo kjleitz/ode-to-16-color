@@ -48,10 +48,10 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    require(:user).permit(*User::PERMITTED_ATTRS)
+    params.require(:user).permit(*User::PERMITTED_ATTRS)
   end
 
   def set_user
-    @user ||= authorize User.find(params[:id])
+    @user ||= authorize User.friendly.find(params[:id])
   end
 end
