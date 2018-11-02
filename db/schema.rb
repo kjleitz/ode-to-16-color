@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_26_034216) do
+ActiveRecord::Schema.define(version: 2018_11_02_023616) do
 
   create_table "animation_votes", force: :cascade do |t|
     t.integer "value"
