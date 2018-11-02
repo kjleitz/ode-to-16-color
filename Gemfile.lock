@@ -241,6 +241,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.1.0)
+  bundler (~> 1.17.1)
   byebug
   capybara (>= 2.15)
   carrierwave (~> 1.2)
